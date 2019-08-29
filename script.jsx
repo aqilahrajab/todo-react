@@ -20,10 +20,10 @@ class List extends React.Component {
 
   }
 
-  deleteItem(event){
+  deleteItem(index){
 
     var list = this.state.list;
-    list.splice(event.target.value,1);
+    list.splice(index,1);
     this.setState({list: list});
     console.log(event.target.value);
     console.log(list);
@@ -37,22 +37,27 @@ class List extends React.Component {
   }
 
   render() {
-      // render the list with a map() here
+
+    let list = this.state.list.map((item,index) => {
+
+        return(
+                <div>
+                    <p>
+                        {item}
+                        <button onClick={()=>{this.deleteItem(index)}} >Delete Item</button>
+                    </p>
+                </div>
+    )})
+
 
       console.log("rendering");
       return (
         <div className="list">
           <input onChange={(event)=>{this.changeHandler(event)}} value={this.state.word}/>
           <button onClick={()=>{this.addItem()}}>Add Item</button>
-          <p>
-            List of things to do:
-            {this.state.list.map((item, index) => (
-                <p>
-                    Things to do: {item}
-                    <button onClick={()=>{this.deleteItem(event)}}>Delete Item</button>
-                </p>
-            ))}
-          </p>
+
+         <p> Things to do: {list} </p>
+
         </div>
       );
   }
