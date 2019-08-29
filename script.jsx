@@ -4,7 +4,8 @@ class List extends React.Component {
 
     this.state = {
       word:"",
-      list : []
+      list : [],
+      deletedItems : []
     }
   }
 
@@ -16,6 +17,16 @@ class List extends React.Component {
     list.push(userInput);
     this.setState({list: list})
     console.log(this.state.list)
+
+  }
+
+  deleteItem(event){
+
+    var list = this.state.list;
+    list.splice(event.target.value,1);
+    this.setState({list: list});
+    console.log(event.target.value);
+    console.log(list);
 
   }
 
@@ -32,11 +43,14 @@ class List extends React.Component {
       return (
         <div className="list">
           <input onChange={(event)=>{this.changeHandler(event)}} value={this.state.word}/>
-          <button onClick={()=>{this.addItem()}}>add item</button>
+          <button onClick={()=>{this.addItem()}}>Add Item</button>
           <p>
             List of things to do:
             {this.state.list.map((item, index) => (
-                <p> Things to do: {item} </p>
+                <p>
+                    Things to do: {item}
+                    <button onClick={()=>{this.deleteItem(event)}}>Delete Item</button>
+                </p>
             ))}
           </p>
         </div>
