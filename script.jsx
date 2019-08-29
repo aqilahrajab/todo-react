@@ -36,7 +36,7 @@ class List extends React.Component {
           <p>
             List of things to do:
             {this.state.list.map((item, index) => (
-                <p> Things to do: {item.list} </p>
+                <p> Things to do: {item} </p>
             ))}
           </p>
         </div>
