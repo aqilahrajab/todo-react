@@ -13,9 +13,11 @@ class List extends React.Component {
   addItem(){
 
     var userInput = this.state.word;
-    var list = this.state.list;
-    list.push(userInput);
-    this.setState({list: list})
+    var currentList = this.state.list;
+    var clearWord = " ";
+    currentList.push(userInput);
+    this.setState({list: currentList});
+    this.setState({word: clearWord});
     console.log(this.state.list)
 
   }
@@ -25,8 +27,9 @@ class List extends React.Component {
     var list = this.state.list;
     list.splice(index,1);
     this.setState({list: list});
-    console.log(event.target.value);
     console.log(list);
+
+
 
   }
 
