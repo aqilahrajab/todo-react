@@ -8,12 +8,21 @@ class List extends React.Component {
     }
   }
 
+  //This is the add button function
   addItem(){
-    debugger;
+
+    var userInput = this.state.word;
+    var list = this.state.list;
+    list.push(userInput);
+    this.setState({list: list})
+    console.log(this.state.list)
+
   }
 
-  changeHandler(){
-    debugger;
+  changeHandler(event){
+    this.setState({word:event.target.value});
+    console.log("change", event.target.value);
+
   }
 
   render() {
@@ -22,8 +31,14 @@ class List extends React.Component {
       console.log("rendering");
       return (
         <div className="list">
-          <input onChange={()=>{this.changeHandler()}} value={this.state.word}/>
+          <input onChange={(event)=>{this.changeHandler(event)}} value={this.state.word}/>
           <button onClick={()=>{this.addItem()}}>add item</button>
+          <p>
+            List of things to do:
+            {this.state.list.map((item, index) => (
+                <p> Things to do: {item.list} </p>
+            ))}
+          </p>
         </div>
       );
   }
@@ -33,4 +48,3 @@ ReactDOM.render(
     <List/>,
     document.getElementById('root')
 );
-
