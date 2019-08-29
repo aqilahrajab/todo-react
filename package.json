@@ -9,6 +9,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "http-server": "^0.11.1"
-  }
+    "http-server": "^0.11.1",
+    "moment": "^2.24.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aqilahrajab/todo-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aqilahrajab/todo-react/issues"
+  },
+  "homepage": "https://github.com/aqilahrajab/todo-react#readme"
 }

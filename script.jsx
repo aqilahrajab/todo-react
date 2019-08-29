@@ -15,9 +15,17 @@ class List extends React.Component {
     var userInput = this.state.word;
     var currentList = this.state.list;
     var clearWord = " ";
-    currentList.push(userInput);
+    var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+    currentList.push({
+
+        word: userInput,
+        date: currentDate
+
+    });
+
     this.setState({list: currentList});
     this.setState({word: clearWord});
+
     console.log(this.state.list)
 
   }
@@ -46,7 +54,8 @@ class List extends React.Component {
         return(
                 <div>
                     <p>
-                        {item}
+                        {item.word}
+                        <p>Poster on: {item.date} </p>
                         <button onClick={()=>{this.deleteItem(index)}} >Delete Item</button>
                     </p>
                 </div>

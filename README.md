@@ -23,4 +23,4 @@ Show the validation error to the user
 Write the code that takes things out of the list. //
 
 #### Further
-Use `moment.js` npm library to add dates to the todo list.
+Use `moment.js` npm library to add dates to the todo list. //
