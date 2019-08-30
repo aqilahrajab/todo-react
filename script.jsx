@@ -4,8 +4,8 @@ class List extends React.Component {
 
     this.state = {
       word:"",
-      list : [],
-      deletedItems : []
+      list: [],
+      deletedItems: [],
     }
   }
 
@@ -13,21 +13,30 @@ class List extends React.Component {
   addItem(){
 
     var userInput = this.state.word;
-    var currentList = this.state.list;
-    var clearWord = " ";
-    var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-    currentList.push({
 
-        word: userInput,
-        date: currentDate
+    if (userInput.length <= 1 ) {
+        alert("Task must be more than 1 character")
+        this.setState({word: ""});
 
-    });
+    } else if (userInput.length >= 6) {
+        alert("Task must be less than 6 characters")
+        this.setState({word: ""});
 
-    this.setState({list: currentList});
-    this.setState({word: clearWord});
+    } else {
 
+        var currentList = this.state.list;
+        var currentDate = moment().format('MMMM Do YYYY, h:mm:ss a');
+        currentList.push({
+
+            word: userInput,
+            date: currentDate
+
+        });
+
+        this.setState({list: currentList});
+        this.setState({word: ""});
+    }
     console.log(this.state.list)
-
   }
 
   deleteItem(index){
@@ -37,14 +46,12 @@ class List extends React.Component {
     this.setState({list: list});
     console.log(list);
 
-
-
   }
 
   changeHandler(event){
-    this.setState({word:event.target.value});
-    console.log("change", event.target.value);
 
+    console.log("change", event.target.value);
+    this.setState({word:event.target.value});
   }
 
   render() {
@@ -65,8 +72,9 @@ class List extends React.Component {
       console.log("rendering");
       return (
         <div className="list">
-          <input onChange={(event)=>{this.changeHandler(event)}} value={this.state.word}/>
-          <button onClick={()=>{this.addItem()}}>Add Item</button>
+
+            <input onChange={(event)=>{this.changeHandler(event);}} value={this.state.word}/>
+            <button onClick={()=>{this.addItem()}}>Add Item</button>
 
          <p> Things to do: {list} </p>
 
