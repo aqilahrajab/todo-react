@@ -5,6 +5,7 @@ MISTAKE:
 2. and always take note of the arrangement.
 
 
+
 removeItem(e){
 	let list = this.state.list
 	list.splice(e.target.value,1)

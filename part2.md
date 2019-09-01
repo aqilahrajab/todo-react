@@ -13,7 +13,6 @@ Given this component hierarchy:
 #### further
 
 When editing a todo item, put the validation in the edit as well. (this could be a modular form component that is used at the top level and for item edit)
-
 #### further
 Add the deleted items list
 
@@ -22,4 +21,3 @@ Make it so that items expire after a certain amount of time (5 mins, 1 day)
 
 #### further
 Make another level of hierarchy, where items can go into named lists (a la trello)
-
